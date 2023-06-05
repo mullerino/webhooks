@@ -9,7 +9,7 @@ const routes = express.Router()
 routes.post('/webhooks', async (req, res) => {
     console.log(JSON.stringify(req.body))
 
-    const event = req.headers.accept
+    const event = req.headers
 
     const branchNameComplete = req.body.ref
 
