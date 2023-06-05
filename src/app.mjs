@@ -18,7 +18,7 @@ routes.post('/webhooks', async (req, res) => {
     }
 
     const currentAction = req.body.action
-    const isMerged = req.body.merged
+    const isMerged = req.body.pull_request.merged
 
 
     console.log('Evento:', event)
