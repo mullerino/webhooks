@@ -7,17 +7,24 @@ server.use(express.json())
 const routes = express.Router()
 
 routes.post('/webhooks', async (req, res) => {
-    console.log(JSON.stringify(req.body))
 
     const event = req.headers['x-github-event']
-    const branchNameComplete = req.body.ref
 
-    const branch = branchNameComplete.split('/')[2]
+    if(event == 'push'){
+        const branchNameComplete = req.body.ref
+        const branch = branchNameComplete.split('/')[2]
 
-    console.log('Nome da branch: ', branch)
+        console.log('Nome da branch: ', branch)
+    }
+
+    const currentAction = req.body.action
+    const isMerged = req.body.merged
+
+
     console.log('Evento:', event)
+    console.log(currentAction, isMerged)
 
-    res.send("Recebido")
+    res.send("Evento recebido!")
 })
 
 routes.get('/', async (req, res) => {
