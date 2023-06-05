@@ -9,8 +9,7 @@ const routes = express.Router()
 routes.post('/webhooks', async (req, res) => {
     console.log(JSON.stringify(req.body))
 
-    const event = req.headers
-
+    const event = req.headers['x-github-event']
     const branchNameComplete = req.body.ref
 
     const branch = branchNameComplete.split('/')[2]
