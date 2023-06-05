@@ -1,0 +1,14 @@
+{
+  "name": "whooks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mullerino/webhooks.git",
+  "author": "Leandro <leandromllr9@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node --experimental-modules src/app.mjs"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
