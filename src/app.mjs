@@ -17,12 +17,14 @@ routes.post('/webhooks', async (req, res) => {
         console.log('Nome da branch: ', branch)
     }
 
-    const currentAction = req.body.action
-    const isMerged = req.body.pull_request.merged
+    if(event == 'pull_request'){
+        const currentAction = req.body.action
+        const isMerged = req.body.pull_request.merged
 
+        console.log(currentAction, isMerged)
+    }
 
     console.log('Evento:', event)
-    console.log(currentAction, isMerged)
 
     res.send("Evento recebido!")
 })
