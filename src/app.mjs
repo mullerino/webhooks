@@ -24,7 +24,7 @@ routes.post('/webhooks', async (req, res) => {
         console.log(currentAction, isMerged)
     }
 
-    console.log('Evento:', event)
+    console.log('Evento recebido:', event)
 
     res.send("Evento recebido!")
 })
