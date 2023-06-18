@@ -11,27 +11,20 @@ routes.post('/webhooks', async (req, res) => {
 
     const event = req.headers['x-github-event']
 
-    if(event == 'push'){
-        const branchNameComplete = req.body.ref
-        const branch = branchNameComplete.split('/')[2]
-
-        console.log('Nome da branch: ', branch)
-    }
-
     if(event == 'pull_request'){
         const currentAction = req.body.action
         const isMerged = req.body.pull_request.merged
 
-    if(currentAction == 'closed' && isMerged == true){
-        try {
-            // Executar o comando 'git pull'
-            const output = execSync('git pull origin main');
-            console.log(`'git pull' executado com sucesso. Saída: ${output.toString()}`);
-          } catch (error) {
-            console.error(`Erro ao executar 'git pull': ${error}`);
-          }
-        console.log('Branch mergiada demais')
-    }
+        if(currentAction == 'closed' && isMerged == true){
+            try {
+                // Executar o comando 'git pull'
+                const output = execSync('git pull origin main');
+                console.log(`'git pull' executado com sucesso. Saída: ${output.toString()}`);
+            } catch (error) {
+                console.error(`Erro ao executar 'git pull': ${error}`);
+            }
+            console.log('Branch mergiada demais')
+        }
         console.log(currentAction, isMerged)
     }
 
