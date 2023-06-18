@@ -34,7 +34,7 @@ routes.post('/webhooks', async (req, res) => {
             }
               console.log(`'git pull' executado com sucesso. Saída: ${stdout}`);
             })
-        console.log('Branch mergiada now')
+        console.log('Branch mergiada demais')
     }
         console.log(currentAction, isMerged)
     }
