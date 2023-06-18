@@ -1,4 +1,5 @@
 import express from 'express'
+import exec from 'child_process'
 
 const server = express()
 
@@ -22,6 +23,17 @@ routes.post('/webhooks', async (req, res) => {
         const isMerged = req.body.pull_request.merged
 
     if(currentAction == 'closed' && isMerged == true){
+        exec('git pull origin main', (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Erro ao executar 'git pull': ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.error(`Erro ao executar 'git pull': ${stderr}`);
+                return;
+            }
+              console.log(`'git pull' executado com sucesso. Saída: ${stdout}`);
+            })
         console.log('Branch mergiada now')
     }
         console.log(currentAction, isMerged)
