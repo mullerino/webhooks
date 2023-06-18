@@ -21,7 +21,7 @@ routes.post('/webhooks', async (req, res) => {
         const currentAction = req.body.action
         const isMerged = req.body.pull_request.merged
 
-    if(currentAction == true && isMerged == true){
+    if(currentAction == 'closed' && isMerged == true){
         console.log('Branch mergiado!')
     }
 
